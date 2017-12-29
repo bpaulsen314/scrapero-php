@@ -1,0 +1,31 @@
+{
+    "name": "w3glue/scrapero-php",
+    "authors": [
+        {
+            "name": "Ben Paulsen",
+            "email": "bpaulsen314@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "W3glue\\Scrapero\\": "src/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/w3glue/perfecto-php"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/w3glue/scripto-php"
+        }
+    ],
+    "require": {
+        "w3glue/perfecto-php": "dev-master",
+        "w3glue/scripto-php": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.1.*"
+    }
+}
