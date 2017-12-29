@@ -4,20 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c7ad254bf2ae3ba782fe7601b43f45c",
+    "hash": "90820c159bd7670c8b8aa6b9b0d203c0",
+    "content-hash": "9a55f9aecc684f6ff347b77b16239e8e",
     "packages": [
         {
-            "name": "w3glue/perfecto-php",
+            "name": "bpaulsen314/perfecto-php",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/w3glue/perfecto-php.git",
-                "reference": "f8829aaff034874b8b62a314648c344b4b823ae0"
+                "url": "https://github.com/bpaulsen314/perfecto-php.git",
+                "reference": "162d6586a051a46c012be26dbf3a4ecc0030c14b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/w3glue/perfecto-php/zipball/f8829aaff034874b8b62a314648c344b4b823ae0",
-                "reference": "f8829aaff034874b8b62a314648c344b4b823ae0",
+                "url": "https://api.github.com/repos/bpaulsen314/perfecto-php/zipball/162d6586a051a46c012be26dbf3a4ecc0030c14b",
+                "reference": "162d6586a051a46c012be26dbf3a4ecc0030c14b",
                 "shasum": ""
             },
             "require-dev": {
@@ -27,7 +28,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "W3glue\\Perfecto\\": "src/"
+                    "Bpaulsen314\\Perfecto\\": "src/"
                 }
             },
             "authors": [
@@ -37,27 +38,27 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/w3glue/perfecto-php/tree/master",
-                "issues": "https://github.com/w3glue/perfecto-php/issues"
+                "source": "https://github.com/bpaulsen314/perfecto-php/tree/master",
+                "issues": "https://github.com/bpaulsen314/perfecto-php/issues"
             },
-            "time": "2017-09-17T19:24:15+00:00"
+            "time": "2017-12-29 07:52:18"
         },
         {
-            "name": "w3glue/scripto-php",
+            "name": "bpaulsen314/scripto-php",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/w3glue/scripto-php.git",
-                "reference": "d89693b36eb73460e16b608e7a23b3dc885eb665"
+                "url": "https://github.com/bpaulsen314/scripto-php.git",
+                "reference": "73e21ca7001354c8f9202b45309bd61bb07bb17e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/w3glue/scripto-php/zipball/d89693b36eb73460e16b608e7a23b3dc885eb665",
-                "reference": "d89693b36eb73460e16b608e7a23b3dc885eb665",
+                "url": "https://api.github.com/repos/bpaulsen314/scripto-php/zipball/73e21ca7001354c8f9202b45309bd61bb07bb17e",
+                "reference": "73e21ca7001354c8f9202b45309bd61bb07bb17e",
                 "shasum": ""
             },
             "require": {
-                "w3glue/perfecto-php": "dev-master"
+                "bpaulsen314/perfecto-php": "dev-master"
             },
             "require-dev": {
                 "phpunit/phpunit": "4.1.*"
@@ -65,7 +66,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "W3glue\\Scripto\\": "src/"
+                    "Bpaulsen314\\Scripto\\": "src/"
                 }
             },
             "authors": [
@@ -75,10 +76,10 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/w3glue/scripto-php/tree/master",
-                "issues": "https://github.com/w3glue/scripto-php/issues"
+                "source": "https://github.com/bpaulsen314/scripto-php/tree/master",
+                "issues": "https://github.com/bpaulsen314/scripto-php/issues"
             },
-            "time": "2017-09-02T02:16:05+00:00"
+            "time": "2017-12-29 07:54:21"
         }
     ],
     "packages-dev": [
@@ -142,7 +143,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-10-06T15:47:00+00:00"
+            "time": "2015-10-06 15:47:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -187,7 +188,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2013-10-10T15:34:57+00:00"
+            "time": "2013-10-10 15:34:57"
         },
         {
             "name": "phpunit/php-text-template",
@@ -228,7 +229,7 @@
             "keywords": [
                 "template"
             ],
-            "time": "2015-06-21T13:50:34+00:00"
+            "time": "2015-06-21 13:50:34"
         },
         {
             "name": "phpunit/php-timer",
@@ -277,20 +278,20 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2017-02-26T11:10:40+00:00"
+            "time": "2017-02-26 11:10:40"
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.4.11",
+            "version": "1.4.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "e03f8f67534427a787e21a385a67ec3ca6978ea7"
+                "reference": "1ce90ba27c42e4e44e6d8458241466380b51fa16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/e03f8f67534427a787e21a385a67ec3ca6978ea7",
-                "reference": "e03f8f67534427a787e21a385a67ec3ca6978ea7",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/1ce90ba27c42e4e44e6d8458241466380b51fa16",
+                "reference": "1ce90ba27c42e4e44e6d8458241466380b51fa16",
                 "shasum": ""
             },
             "require": {
@@ -326,7 +327,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2017-02-27T10:12:30+00:00"
+            "time": "2017-12-04 08:55:13"
         },
         {
             "name": "phpunit/phpunit",
@@ -400,7 +401,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-08-17T08:07:02+00:00"
+            "time": "2014-08-17 08:07:02"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -457,7 +458,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2014-06-12T07:22:15+00:00"
+            "time": "2014-06-12 07:22:15"
         },
         {
             "name": "sebastian/comparator",
@@ -521,7 +522,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2017-01-29T09:50:25+00:00"
+            "time": "2017-01-29 09:50:25"
         },
         {
             "name": "sebastian/diff",
@@ -573,7 +574,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2017-05-22T07:24:03+00:00"
+            "time": "2017-05-22 07:24:03"
         },
         {
             "name": "sebastian/environment",
@@ -623,7 +624,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2016-08-18T05:49:44+00:00"
+            "time": "2016-08-18 05:49:44"
         },
         {
             "name": "sebastian/exporter",
@@ -690,7 +691,7 @@
                 "export",
                 "exporter"
             ],
-            "time": "2016-06-17T09:04:28+00:00"
+            "time": "2016-06-17 09:04:28"
         },
         {
             "name": "sebastian/recursion-context",
@@ -743,7 +744,7 @@
             ],
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
-            "time": "2016-10-03T07:41:43+00:00"
+            "time": "2016-10-03 07:41:43"
         },
         {
             "name": "sebastian/version",
@@ -778,20 +779,20 @@
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
-            "time": "2015-06-21T13:59:46+00:00"
+            "time": "2015-06-21 13:59:46"
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.8.27",
+            "version": "v2.8.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "4c29dec8d489c4e37cf87ccd7166cd0b0e6a45c5"
+                "reference": "968ef42161e4bc04200119da473077f9e7015128"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/4c29dec8d489c4e37cf87ccd7166cd0b0e6a45c5",
-                "reference": "4c29dec8d489c4e37cf87ccd7166cd0b0e6a45c5",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/968ef42161e4bc04200119da473077f9e7015128",
+                "reference": "968ef42161e4bc04200119da473077f9e7015128",
                 "shasum": ""
             },
             "require": {
@@ -827,14 +828,14 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-01T20:52:29+00:00"
+            "time": "2017-11-29 09:33:18"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "w3glue/perfecto-php": 20,
-        "w3glue/scripto-php": 20
+        "bpaulsen314/perfecto-php": 20,
+        "bpaulsen314/scripto-php": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

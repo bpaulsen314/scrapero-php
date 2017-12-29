@@ -1,7 +1,7 @@
 <?php
-namespace W3glue\Scrapero;
+namespace Bpaulsen314\Scrapero;
 
-use W3glue\Scripto\Script;
+use Bpaulsen314\Scripto\Script;
 
 class Scraper extends Script
 {

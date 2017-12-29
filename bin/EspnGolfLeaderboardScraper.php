@@ -1,7 +1,7 @@
 <?php
 require_once(preg_replace("#/bin(|/.+)$#", "/vendor/autoload.php", __DIR__));
 
-class EspnGolfLeaderboardScraper extends W3glue\Scrapero\Scraper
+class EspnGolfLeaderboardScraper extends Bpaulsen314\Scrapero\Scraper
 {
     protected $_config = [
         "seed" => "http://www.espn.com/golf/leaderboard",

@@ -1,13 +1,13 @@
 <?php
-namespace W3glue\Scrapero;
+namespace Bpaulsen314\Scrapero;
 
 use DOMDocument;
 use DOMElement;
 use DOMXpath;
 
-use W3glue\Perfecto\ArrayHelper;
-use W3glue\Perfecto\Object;
-use W3glue\Perfecto\StringHelper;
+use Bpaulsen314\Perfecto\ArrayHelper;
+use Bpaulsen314\Perfecto\Object;
+use Bpaulsen314\Perfecto\StringHelper;
 
 class WebPage extends Object
 {
