@@ -1,9 +1,11 @@
 <?php
 namespace Bpaulsen314\Scrapero;
 
+use DOMComment;
 use DOMDocument;
 use DOMElement;
 use DOMXpath;
+use Exception;
 
 use Bpaulsen314\Perfecto\ArrayHelper;
 use Bpaulsen314\Perfecto\Object;
@@ -11,7 +13,7 @@ use Bpaulsen314\Perfecto\StringHelper;
 
 class WebPage extends Object
 {
-    const DOWNLOAD_DIR = "/tmp/w3glue/scrapero/downloads";
+    const DOWNLOAD_DIR = "/tmp/bpaulsen314/scrapero/downloads";
     const DOCUMENT_CACHE_EXPIRY = 60;
 
     protected static $_magicCallMethods = [
@@ -20,12 +22,37 @@ class WebPage extends Object
 
     protected static $_documentCache = [];
 
+    protected static $_useBrowser = false;
+
     protected $_downloaded = false;
     protected $_uri = null;
+
+    public static function setUseBrowser($useBrowser)
+    {
+        static::$_useBrowser = $useBrowser;
+    }
 
     public function __construct($uri)
     {
         $this->_uri = $uri;
+    }
+
+    public function getAttributeByXpath($name, $query, $root = null)
+    {
+        $attributes = $this->getAttributesByXpath($name, $query, $root);
+        return array_pop($attributes);
+    }
+
+    public function getAttributesByXpath($name, $query, $root = null)
+    {
+        $attributes = [];
+
+        $elements = $this->getElementsByXpath($query, $root);
+        foreach ($elements as $element) {
+            $attributes[] = $element->getAttribute($name);
+        }
+        
+        return $attributes;
     }
 
     public function getDocument()
@@ -102,15 +129,18 @@ class WebPage extends Object
             $cols = [];
             $colElements = $this->getElementsByXpath($options["columnQuery"], $table);
             for ($i = 0; $i < count($colElements); $i++) {
-                $col = $colElements[$i];;
+                $col = $colElements[$i];
                 if (isset($options["columnFunction"])) {
                     $col = call_user_func($options["columnFunction"], $i, $col);
                 }
                 if ($col instanceof DOMElement) {
                     $col = $sHelper->camelNotate($col->textContent, true);
                 }
-                if ($col || $col === "") {
-                    $cols[] = $col;
+                if (!is_array($col)) {
+                    $col = [$col];
+                }
+                foreach ($col as $c) {
+                    $cols[] = $c;
                 }
             }
 
@@ -132,10 +162,11 @@ class WebPage extends Object
                     $cells = array_pop($row);
                     $row = array_pop($row);
                 }
-                $cellElements = $this->getElementsByXpath(".//td", $row);
+                $cellElements = $this->getElementsByXpath(".//td | .//th", $row);
                 for ($i = 0; $i < count($cellElements); $i++) {
-                    $cell = $cellElements[$i];;
+                    $cell = $cellElements[$i];
                     $col = isset($cols[$i]) ? $cols[$i] : $i;
+                    if (!$col) continue;
                     if (isset($options["cellFunction"])) {
                         $cell = call_user_func($options["cellFunction"], $col, $cell);
                     }
@@ -151,9 +182,7 @@ class WebPage extends Object
                         }
                     }
                 }
-                if (count($cols) <= count($cells)) {
-                    $data[] = $cells;
-                }
+                $data[] = $cells;
             }
         }
 
@@ -176,6 +205,29 @@ class WebPage extends Object
         }
         
         return $texts;
+    }
+
+    public function uncomment($query, $root = null)
+    {
+        $element = $this->getElementByXpath($query, $root);
+        if ($element instanceof DOMComment) {
+            $doc = new DOMDocument();
+            $doc->loadHtml($element->textContent);
+            $doc->normalizeDocument();
+            $xpath = new DOMXPath($doc);
+            $nodes = $xpath->query("//body");
+            foreach ($nodes as $node) {
+                foreach ($node->childNodes as $cn) {
+                    $n = $this->getDocument()->importNode($cn, true);
+                    $element->parentNode->appendChild($n);
+                }
+            }
+        } else {
+            $error = [
+                "No comment block found using xpath expression:", $query
+            ];
+            throw new Exception(implode(" ", $error));
+        }
     }
 
     protected function _getDocumentFromCache()
@@ -205,13 +257,27 @@ class WebPage extends Object
     protected function _getDocumentFromDownload()
     {
         $document = new DOMDocument();
-
+        
         $filePath = $this->getDownloadFilePath();
         if (!$this->_downloaded || !file_exists($filePath)) {
             if (!file_exists(dirname($filePath))) {
                 mkdir(dirname($filePath), 0777, true);
             }
-            file_put_contents($filePath, file_get_contents($this->_uri));
+            $contents = [];
+            if (static::$_useBrowser) {
+                // $client = PhantomJsClient::getInstance();
+                // $client->getEngine()->setPath(static::$_usePhantomJs);
+                // $request = $client->getMessageFactory()->createRequest(
+                //     $this->_uri, "GET"
+                // );
+                // $response = $client->getMessageFactory()->createResponse();
+                // $client->send($request, $response);
+                // $contents = $response->getContent();
+                $contents = [];
+            } else {
+                $contents = file_get_contents($this->_uri);
+            }
+            file_put_contents($filePath, $contents);
         }
         @$document->loadHTMLFile($filePath);
 
